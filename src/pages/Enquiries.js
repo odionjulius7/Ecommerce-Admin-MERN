@@ -52,10 +52,12 @@ const Enquiries = () => {
   const hideModal = () => {
     setOpen(false);
   };
+
   useEffect(() => {
     dispatch(resetState());
     dispatch(getEnquiries());
   }, []);
+
   const enqState = useSelector((state) => state.enquiry.enquiries);
   const data1 = [];
   for (let i = 0; i < enqState.length; i++) {
@@ -72,6 +74,7 @@ const Enquiries = () => {
             className="form-control form-select"
             id=""
             onChange={(e) => setEnquiryStatus(e.target.value, enqState[i]._id)}
+            // above is how us use event handler and passing value at the same time
           >
             <option value="Submitted">Submitted</option>
             <option value="Contacted">Contacted</option>
@@ -104,6 +107,7 @@ const Enquiries = () => {
     const data = { id: i, enqData: e };
     dispatch(updateAEnquiry(data));
   };
+
   const deleteEnq = (e) => {
     dispatch(deleteAEnquiry(e));
     setOpen(false);

@@ -50,13 +50,13 @@ const ViewEnq = () => {
         <div className="d-flex align-items-center gap-3">
           <h6 className="mb-0">Mobile:</h6>
           <p className="mb-0">
-            <a href={`tel:+91${enqMobile}`}>{enqMobile}</a>
+            <a href={`tel:+243${enqMobile}`}>{enqMobile}</a>
           </p>
         </div>
         <div className="d-flex align-items-center gap-3">
           <h6 className="mb-0">Email:</h6>
           <p className="mb-0">
-            <a href={`mailto:{enqEmail}`}>{enqEmail}</a>
+            <a href={`mailto:${enqEmail}`}>{enqEmail}</a>
           </p>
         </div>
         <div className="d-flex align-items-center gap-3">

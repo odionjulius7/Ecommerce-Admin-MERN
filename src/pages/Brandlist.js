@@ -33,16 +33,20 @@ const Brandlist = () => {
   const showModal = (e) => {
     setOpen(true);
     setbrandId(e);
+    //When the delete btn is click d modal opens
+    // and manipulated to pass the id to be deleted to the brandId state
   };
 
   const hideModal = () => {
     setOpen(false);
   };
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(resetState());
+    dispatch(resetState()); // at first render alway clear the state(like loading, success etc)
     dispatch(getBrands());
   }, []);
+
   const brandState = useSelector((state) => state.brand.brands);
   const data1 = [];
   for (let i = 0; i < brandState.length; i++) {
@@ -60,6 +64,7 @@ const Brandlist = () => {
           <button
             className="ms-3 fs-3 text-danger bg-transparent border-0"
             onClick={() => showModal(brandState[i]._id)}
+            //the onclick is to show the modal and manipulated to pass the id to be deleted to the brandId state
           >
             <AiFillDelete />
           </button>
@@ -67,14 +72,17 @@ const Brandlist = () => {
       ),
     });
   }
+
+  // performAction is used in the modal onOk to delete that brand id
   const deleteBrand = (e) => {
     dispatch(deleteABrand(e));
 
-    setOpen(false);
+    setOpen(false); // always set open to false after action
     setTimeout(() => {
       dispatch(getBrands());
     }, 100);
   };
+
   return (
     <div>
       <h3 className="mb-4 title">Brands</h3>

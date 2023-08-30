@@ -45,6 +45,9 @@ const Categorylist = () => {
     dispatch(getCategories());
   }, []);
   const pCatStat = useSelector((state) => state.pCategory.pCategories);
+  const { isSuccess, deletedCategory } = useSelector(
+    (state) => state.pCategory
+  );
   const data1 = [];
   for (let i = 0; i < pCatStat.length; i++) {
     data1.push({
@@ -68,13 +71,21 @@ const Categorylist = () => {
       ),
     });
   }
+
   const deleteCategory = (e) => {
     dispatch(deleteAProductCategory(e));
     setOpen(false);
-    setTimeout(() => {
-      dispatch(getCategories());
-    }, 100);
+    // setTimeout(() => {
+    //   dispatch(getCategories());
+    // }, 150);
   };
+
+  console.log(deletedCategory?.deletedCategory);
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [deletedCategory]);
+
   return (
     <div>
       <h3 className="mb-4 title">Product Categories</h3>

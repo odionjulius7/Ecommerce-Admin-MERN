@@ -43,6 +43,7 @@ const Addblog = () => {
   } = blogState;
   useEffect(() => {
     if (getBlogId !== undefined) {
+      // when d route has id to edit a blog push the img url from blog details to the img variable
       dispatch(getABlog(getBlogId));
       img.push(blogImages);
     } else {
@@ -69,6 +70,7 @@ const Addblog = () => {
   }, [isSuccess, isError, isLoading]);
 
   const img = [];
+  // after uploading images to cloudinary, just push the images url and public id to d img variable
   imgState.forEach((i) => {
     img.push({
       public_id: i.public_id,

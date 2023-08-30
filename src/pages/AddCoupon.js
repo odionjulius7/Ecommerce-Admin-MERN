@@ -23,6 +23,7 @@ const AddCoupon = () => {
   const navigate = useNavigate();
   const getCouponId = location.pathname.split("/")[3];
   const newCoupon = useSelector((state) => state.coupon);
+  // const { one } = useSelector((state) => state.coupon);
 
   const {
     isSuccess,
@@ -39,6 +40,8 @@ const AddCoupon = () => {
     const [month, day, year] = newDate.split("/");
     return [year, month, day].join("-");
   };
+
+  // console.log(one);
 
   useEffect(() => {
     if (getCouponId !== undefined) {
