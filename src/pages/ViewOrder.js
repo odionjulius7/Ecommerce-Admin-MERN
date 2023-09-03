@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
-import { getOrderByUser, getOrders } from "../features/auth/authSlice";
+import { getOrderByUser } from "../features/auth/authSlice";
 
 const ViewOrder = () => {
   const location = useLocation();
@@ -14,6 +14,8 @@ const ViewOrder = () => {
     dispatch(getOrderByUser(userId));
   }, []);
   const orderState = useSelector((state) => state.auth?.orders);
+
+  // console.log(orderState);
 
   return (
     <div>

@@ -21,7 +21,7 @@ const getOrder = async (id) => {
     `${base_url}user/getorderbyuser/${id}`,
     config
   );
-
+console.log(response.data);
   return response.data;
 };
 
